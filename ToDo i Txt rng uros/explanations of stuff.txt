@@ -1,0 +1,4 @@
+The NotificationService uses Firebase Cloud Messaging (FCM) to send notifications to users. When you call the SendNotification method, it creates a Message object with the notification details (title, body) and the FCM registration token of the device to which you want to send the notification. It then calls the SendAsync method of the FirebaseMessaging class to send the message.
+
+The FCM registration token is a unique identifier for each device. You need to obtain this token on the client side (in your mobile app or web app) and send it to your server. When you want to send a notification to a specific user, you use the FCM registration token of that user’s device.
+

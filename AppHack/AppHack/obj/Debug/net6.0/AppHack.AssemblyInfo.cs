@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AppHack")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a79a9fd8ff327f8435fa541fcafcae273dde7c85")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7ac6ef867a8db55ce419f01c759c1c709a9ce137")]
 [assembly: System.Reflection.AssemblyProductAttribute("AppHack")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AppHack")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

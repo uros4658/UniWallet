@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\ProjekatProg\\HakatonKP\\AppHack\\AppHack\\AppHack.csproj": {}
+    "C:\\ProjekatProg\\HakatonKP\\UniWallet\\AppHack\\AppHack\\AppHack.csproj": {}
   },
   "projects": {
-    "C:\\ProjekatProg\\HakatonKP\\AppHack\\AppHack\\AppHack.csproj": {
+    "C:\\ProjekatProg\\HakatonKP\\UniWallet\\AppHack\\AppHack\\AppHack.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\ProjekatProg\\HakatonKP\\AppHack\\AppHack\\AppHack.csproj",
+        "projectUniqueName": "C:\\ProjekatProg\\HakatonKP\\UniWallet\\AppHack\\AppHack\\AppHack.csproj",
         "projectName": "AppHack",
-        "projectPath": "C:\\ProjekatProg\\HakatonKP\\AppHack\\AppHack\\AppHack.csproj",
+        "projectPath": "C:\\ProjekatProg\\HakatonKP\\UniWallet\\AppHack\\AppHack\\AppHack.csproj",
         "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\ProjekatProg\\HakatonKP\\AppHack\\AppHack\\obj\\",
+        "outputPath": "C:\\ProjekatProg\\HakatonKP\\UniWallet\\AppHack\\AppHack\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -57,9 +57,17 @@
               "target": "Package",
               "version": "[6.0.29, )"
             },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.5.0, )"
+            },
+            "WalletConnect.Sign": {
+              "target": "Package",
+              "version": "[2.3.6, )"
             }
           },
           "imports": [

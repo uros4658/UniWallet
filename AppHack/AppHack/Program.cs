@@ -16,7 +16,10 @@ var credential = googleCredential.UnderlyingCredential as ServiceAccountCredenti
 
 // Add services to the container.
 Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", @"<uniwalletcred");
-builder.Services.AddSingleton(FirebaseApp.Create(new AppOptions { Credential = googleCredential }));
+var firebaseApp = FirebaseApp.Create(new AppOptions { Credential = googleCredential });
+builder.Services.AddSingleton(firebaseApp);
+builder.Services.AddSingleton<IFirebaseAuthService, FirebaseAuthService>();
+builder.Services.AddSingleton<NotificationService>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -43,7 +46,7 @@ builder.Services.AddSingleton(new FirebaseAuthClient(new FirebaseAuthConfig
         new GoogleProvider()
     }
 }));
-builder.Services.AddSingleton<IFirebaseAuthService, FirebaseAuthService>();
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -57,6 +60,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateLifetime = true
         };
     });
+
 
 var app = builder.Build();
 

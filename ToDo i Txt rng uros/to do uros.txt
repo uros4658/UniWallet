@@ -1,0 +1,4 @@
+delete all the accounts
+baza u firebase-u
+notifikacije //// mzd
+prikazuj wallete
