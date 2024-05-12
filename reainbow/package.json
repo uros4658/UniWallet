@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@coinbase/wallet-sdk": "^3.7.2",
+    "@web3-react/core": "^8.2.3",
+    "cors-anywhere": "^0.4.4",
+    "ethers": "^6.12.1",
+    "wagmi": "^2.8.6",
+    "web3modal": "^1.9.12"
+  }
+}
