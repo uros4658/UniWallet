@@ -3,48 +3,32 @@
   "WorkspaceRootPath": "C:\\ProjekatProg\\HakatonKP\\UniWallet\\AppHack\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{266712F8-0074-49DD-8305-3D1CD086F98A}|AppHack\\AppHack.csproj|c:\\projekatprog\\hakatonkp\\uniwallet\\apphack\\apphack\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{266712F8-0074-49DD-8305-3D1CD086F98A}|AppHack\\AppHack.csproj|solutionrelative:apphack\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{266712F8-0074-49DD-8305-3D1CD086F98A}|AppHack\\AppHack.csproj|c:\\projekatprog\\hakatonkp\\uniwallet\\apphack\\apphack\\apphack.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{266712F8-0074-49DD-8305-3D1CD086F98A}|AppHack\\AppHack.csproj|solutionrelative:apphack\\apphack.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{266712F8-0074-49DD-8305-3D1CD086F98A}|AppHack\\AppHack.csproj|c:\\projekatprog\\hakatonkp\\uniwallet\\apphack\\apphack\\service\\notificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{266712F8-0074-49DD-8305-3D1CD086F98A}|AppHack\\AppHack.csproj|solutionrelative:apphack\\service\\notificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{266712F8-0074-49DD-8305-3D1CD086F98A}|AppHack\\AppHack.csproj|c:\\projekatprog\\hakatonkp\\uniwallet\\apphack\\apphack\\service\\firebaseauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{266712F8-0074-49DD-8305-3D1CD086F98A}|AppHack\\AppHack.csproj|solutionrelative:apphack\\service\\firebaseauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{266712F8-0074-49DD-8305-3D1CD086F98A}|AppHack\\AppHack.csproj|c:\\projekatprog\\hakatonkp\\uniwallet\\apphack\\apphack\\models\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{266712F8-0074-49DD-8305-3D1CD086F98A}|AppHack\\AppHack.csproj|solutionrelative:apphack\\models\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{266712F8-0074-49DD-8305-3D1CD086F98A}|AppHack\\AppHack.csproj|c:\\projekatprog\\hakatonkp\\uniwallet\\apphack\\apphack\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{266712F8-0074-49DD-8305-3D1CD086F98A}|AppHack\\AppHack.csproj|solutionrelative:apphack\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{266712F8-0074-49DD-8305-3D1CD086F98A}|AppHack\\AppHack.csproj|c:\\projekatprog\\hakatonkp\\uniwallet\\apphack\\apphack\\models\\signupuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{266712F8-0074-49DD-8305-3D1CD086F98A}|AppHack\\AppHack.csproj|solutionrelative:apphack\\models\\signupuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{266712F8-0074-49DD-8305-3D1CD086F98A}|AppHack\\AppHack.csproj|c:\\projekatprog\\hakatonkp\\uniwallet\\apphack\\apphack\\interfaces\\ifirebaseauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{266712F8-0074-49DD-8305-3D1CD086F98A}|AppHack\\AppHack.csproj|solutionrelative:apphack\\interfaces\\ifirebaseauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{266712F8-0074-49DD-8305-3D1CD086F98A}|AppHack\\AppHack.csproj|c:\\projekatprog\\hakatonkp\\uniwallet\\apphack\\apphack\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{266712F8-0074-49DD-8305-3D1CD086F98A}|AppHack\\AppHack.csproj|solutionrelative:apphack\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{266712F8-0074-49DD-8305-3D1CD086F98A}|AppHack\\AppHack.csproj|c:\\projekatprog\\hakatonkp\\uniwallet\\apphack\\apphack\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{266712F8-0074-49DD-8305-3D1CD086F98A}|AppHack\\AppHack.csproj|solutionrelative:apphack\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{266712F8-0074-49DD-8305-3D1CD086F98A}|AppHack\\AppHack.csproj|c:\\projekatprog\\hakatonkp\\uniwallet\\apphack\\apphack\\models\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{266712F8-0074-49DD-8305-3D1CD086F98A}|AppHack\\AppHack.csproj|solutionrelative:apphack\\models\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{266712F8-0074-49DD-8305-3D1CD086F98A}|AppHack\\AppHack.csproj|c:\\projekatprog\\hakatonkp\\uniwallet\\apphack\\apphack\\service\\signupservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{266712F8-0074-49DD-8305-3D1CD086F98A}|AppHack\\AppHack.csproj|solutionrelative:apphack\\service\\signupservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{266712F8-0074-49DD-8305-3D1CD086F98A}|AppHack\\AppHack.csproj|c:\\projekatprog\\hakatonkp\\uniwallet\\apphack\\apphack\\controllers\\dbcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{266712F8-0074-49DD-8305-3D1CD086F98A}|AppHack\\AppHack.csproj|solutionrelative:apphack\\controllers\\dbcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{266712F8-0074-49DD-8305-3D1CD086F98A}|AppHack\\AppHack.csproj|c:\\projekatprog\\hakatonkp\\uniwallet\\apphack\\apphack\\service\\logoutservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{266712F8-0074-49DD-8305-3D1CD086F98A}|AppHack\\AppHack.csproj|solutionrelative:apphack\\service\\logoutservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{266712F8-0074-49DD-8305-3D1CD086F98A}|AppHack\\AppHack.csproj|c:\\projekatprog\\hakatonkp\\uniwallet\\apphack\\apphack\\service\\loginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{266712F8-0074-49DD-8305-3D1CD086F98A}|AppHack\\AppHack.csproj|solutionrelative:apphack\\service\\loginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{266712F8-0074-49DD-8305-3D1CD086F98A}|AppHack\\AppHack.csproj|c:\\projekatprog\\hakatonkp\\uniwallet\\apphack\\apphack\\service\\signupservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{266712F8-0074-49DD-8305-3D1CD086F98A}|AppHack\\AppHack.csproj|solutionrelative:apphack\\service\\signupservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -54,149 +38,97 @@
       "DocumentGroups": [
         {
           "DockedWidth": 151,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "NotificationService.cs",
-              "DocumentMoniker": "C:\\ProjekatProg\\HakatonKP\\UniWallet\\AppHack\\AppHack\\Service\\NotificationService.cs",
-              "RelativeDocumentMoniker": "AppHack\\Service\\NotificationService.cs",
-              "ToolTip": "C:\\ProjekatProg\\HakatonKP\\UniWallet\\AppHack\\AppHack\\Service\\NotificationService.cs",
-              "RelativeToolTip": "AppHack\\Service\\NotificationService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAIwBkAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-11T14:52:49.945Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 0,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\ProjekatProg\\HakatonKP\\UniWallet\\AppHack\\AppHack\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "AppHack\\Controllers\\AuthController.cs",
               "ToolTip": "C:\\ProjekatProg\\HakatonKP\\UniWallet\\AppHack\\AppHack\\Controllers\\AuthController.cs",
               "RelativeToolTip": "AppHack\\Controllers\\AuthController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAANAAAA",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAQwB0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-11T14:31:48.157Z",
+              "WhenOpened": "2024-05-11T23:08:43.333Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\ProjekatProg\\HakatonKP\\UniWallet\\AppHack\\AppHack\\Program.cs",
-              "RelativeDocumentMoniker": "AppHack\\Program.cs",
-              "ToolTip": "C:\\ProjekatProg\\HakatonKP\\UniWallet\\AppHack\\AppHack\\Program.cs",
-              "RelativeToolTip": "AppHack\\Program.cs",
-              "ViewState": "AQIAAE0AAAAAAAAAAAAkwD4AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-11T13:48:51.88Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 5,
               "Title": "LogoutService.cs",
               "DocumentMoniker": "C:\\ProjekatProg\\HakatonKP\\UniWallet\\AppHack\\AppHack\\Service\\LogoutService.cs",
               "RelativeDocumentMoniker": "AppHack\\Service\\LogoutService.cs",
               "ToolTip": "C:\\ProjekatProg\\HakatonKP\\UniWallet\\AppHack\\AppHack\\Service\\LogoutService.cs",
               "RelativeToolTip": "AppHack\\Service\\LogoutService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAkAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-11T14:11:15.414Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "UserDto.cs",
-              "DocumentMoniker": "C:\\ProjekatProg\\HakatonKP\\UniWallet\\AppHack\\AppHack\\Models\\UserDto.cs",
-              "RelativeDocumentMoniker": "AppHack\\Models\\UserDto.cs",
-              "ToolTip": "C:\\ProjekatProg\\HakatonKP\\UniWallet\\AppHack\\AppHack\\Models\\UserDto.cs",
-              "RelativeToolTip": "AppHack\\Models\\UserDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\ProjekatProg\\HakatonKP\\UniWallet\\AppHack\\AppHack\\Program.cs",
+              "RelativeDocumentMoniker": "AppHack\\Program.cs",
+              "ToolTip": "C:\\ProjekatProg\\HakatonKP\\UniWallet\\AppHack\\AppHack\\Program.cs",
+              "RelativeToolTip": "AppHack\\Program.cs",
+              "ViewState": "AQIAAGMAAAAAAAAAAAAcwHsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-11T13:57:56.637Z",
+              "WhenOpened": "2024-05-11T13:48:51.88Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "SignUpUserDto.cs",
               "DocumentMoniker": "C:\\ProjekatProg\\HakatonKP\\UniWallet\\AppHack\\AppHack\\Models\\SignUpUserDto.cs",
               "RelativeDocumentMoniker": "AppHack\\Models\\SignUpUserDto.cs",
               "ToolTip": "C:\\ProjekatProg\\HakatonKP\\UniWallet\\AppHack\\AppHack\\Models\\SignUpUserDto.cs",
               "RelativeToolTip": "AppHack\\Models\\SignUpUserDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-11T13:55:44.062Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AppHack.csproj",
-              "DocumentMoniker": "C:\\ProjekatProg\\HakatonKP\\UniWallet\\AppHack\\AppHack\\AppHack.csproj",
-              "RelativeDocumentMoniker": "AppHack\\AppHack.csproj",
-              "ToolTip": "C:\\ProjekatProg\\HakatonKP\\UniWallet\\AppHack\\AppHack\\AppHack.csproj",
-              "RelativeToolTip": "AppHack\\AppHack.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-05-11T09:02:43.344Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "SignUpService.cs",
-              "DocumentMoniker": "C:\\ProjekatProg\\HakatonKP\\UniWallet\\AppHack\\AppHack\\Service\\SignUpService.cs",
-              "RelativeDocumentMoniker": "AppHack\\Service\\SignUpService.cs",
-              "ToolTip": "C:\\ProjekatProg\\HakatonKP\\UniWallet\\AppHack\\AppHack\\Service\\SignUpService.cs",
-              "RelativeToolTip": "AppHack\\Service\\SignUpService.cs",
-              "ViewState": "AQIAAAEAAAAAAAAAAAAwwBEAAAAJAAAA",
+              "DocumentIndex": 4,
+              "Title": "DBController.cs",
+              "DocumentMoniker": "C:\\ProjekatProg\\HakatonKP\\UniWallet\\AppHack\\AppHack\\Controllers\\DBController.cs",
+              "RelativeDocumentMoniker": "AppHack\\Controllers\\DBController.cs",
+              "ToolTip": "C:\\ProjekatProg\\HakatonKP\\UniWallet\\AppHack\\AppHack\\Controllers\\DBController.cs",
+              "RelativeToolTip": "AppHack\\Controllers\\DBController.cs",
+              "ViewState": "AQIAADcAAAAAAAAAAAAIwEwAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-11T14:03:54.034Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "LoginService.cs",
-              "DocumentMoniker": "C:\\ProjekatProg\\HakatonKP\\UniWallet\\AppHack\\AppHack\\Service\\LoginService.cs",
-              "RelativeDocumentMoniker": "AppHack\\Service\\LoginService.cs",
-              "ToolTip": "C:\\ProjekatProg\\HakatonKP\\UniWallet\\AppHack\\AppHack\\Service\\LoginService.cs",
-              "RelativeToolTip": "AppHack\\Service\\LoginService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAA2AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-11T14:03:59.946Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "IFirebaseAuthService.cs",
-              "DocumentMoniker": "C:\\ProjekatProg\\HakatonKP\\UniWallet\\AppHack\\AppHack\\Interfaces\\IFirebaseAuthService.cs",
-              "RelativeDocumentMoniker": "AppHack\\Interfaces\\IFirebaseAuthService.cs",
-              "ToolTip": "C:\\ProjekatProg\\HakatonKP\\UniWallet\\AppHack\\AppHack\\Interfaces\\IFirebaseAuthService.cs",
-              "RelativeToolTip": "AppHack\\Interfaces\\IFirebaseAuthService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-11T13:54:20.709Z",
+              "WhenOpened": "2024-05-11T15:59:54.22Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "FirebaseAuthService.cs",
-              "DocumentMoniker": "C:\\ProjekatProg\\HakatonKP\\UniWallet\\AppHack\\AppHack\\Service\\FirebaseAuthService.cs",
-              "RelativeDocumentMoniker": "AppHack\\Service\\FirebaseAuthService.cs",
-              "ToolTip": "C:\\ProjekatProg\\HakatonKP\\UniWallet\\AppHack\\AppHack\\Service\\FirebaseAuthService.cs",
-              "RelativeToolTip": "AppHack\\Service\\FirebaseAuthService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAABDAAAA",
+              "Title": "UserDto.cs",
+              "DocumentMoniker": "C:\\ProjekatProg\\HakatonKP\\UniWallet\\AppHack\\AppHack\\Models\\UserDto.cs",
+              "RelativeDocumentMoniker": "AppHack\\Models\\UserDto.cs",
+              "ToolTip": "C:\\ProjekatProg\\HakatonKP\\UniWallet\\AppHack\\AppHack\\Models\\UserDto.cs",
+              "RelativeToolTip": "AppHack\\Models\\UserDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-11T13:54:10.538Z",
+              "WhenOpened": "2024-05-11T13:57:56.637Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "SignUpService.cs",
+              "DocumentMoniker": "C:\\ProjekatProg\\HakatonKP\\UniWallet\\AppHack\\AppHack\\Service\\SignUpService.cs",
+              "RelativeDocumentMoniker": "AppHack\\Service\\SignUpService.cs",
+              "ToolTip": "C:\\ProjekatProg\\HakatonKP\\UniWallet\\AppHack\\AppHack\\Service\\SignUpService.cs",
+              "RelativeToolTip": "AppHack\\Service\\SignUpService.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAADwvyMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-11T14:03:54.034Z",
               "EditorCaption": ""
             }
           ]

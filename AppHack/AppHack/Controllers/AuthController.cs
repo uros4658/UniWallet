@@ -1,5 +1,7 @@
 ﻿using AppHack.Interfaces;
 using AppHack.Models;
+using FireSharp.Config;
+using FireSharp.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AppHack.Controllers
@@ -43,5 +45,6 @@ namespace AppHack.Controllers
             _authService.SignOut();
             return Ok();
         }
+        
     }
 }

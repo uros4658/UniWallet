@@ -1,0 +1,16 @@
+{
+  "projects": {
+    "default": "uniwallet-9bb58"
+  },
+  "targets": {},
+  "etags": {
+    "uniwallet-9bb58": {
+      "extensionInstances": {}
+    }
+  },
+  "dataconnectEmulatorConfig": {
+    "postgres": {
+      "localConnectionString": "postgresql://localhost:5432?sslmode=disable"
+    }
+  }
+}

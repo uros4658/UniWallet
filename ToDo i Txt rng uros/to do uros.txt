@@ -1,4 +1,39 @@
-delete all the accounts
-baza u firebase-u
-notifikacije //// mzd
-prikazuj wallete
+// Pre
+
+npm install @walletconnect/web3-provider web3
+
+// Posle
+
+import Web3 from 'web3';
+import WalletConnectProvider from '@walletconnect/web3-provider';
+
+// Initialize WalletConnect Provider
+const provider = new WalletConnectProvider({
+  infuraId: 'YOUR_INFURA_PROJECT_ID', // Required
+});
+
+// Enable session (triggers QR Code modal)
+await provider.enable();
+
+// Initialize Web3
+const web3 = new Web3(provider);
+
+// Get accounts
+const accounts = await web3.eth.getAccounts();
+
+// Set the details of the transaction
+const txDetails = {
+  from: accounts[0], // Your account address
+  to: 'RECIPIENT_ADDRESS', // Recipient's address
+  value: web3.utils.toWei('1', 'ether'), // Amount of Ether to send (1 Ether in this example)
+};
+
+// Send the transaction
+web3.eth.sendTransaction(txDetails)
+  .on('transactionHash', function(hash){
+    console.log(`Transaction hash: ${hash}`);
+  })
+  .on('receipt', function(receipt){
+    console.log(`Transaction was successfully executed. Receipt: ${receipt}`);
+  })
+  .on('error', console.error); // If there was an error, log it

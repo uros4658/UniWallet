@@ -23,6 +23,8 @@ builder.Services.AddSingleton<NotificationService>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+
+// Add Swagger services
 builder.Services.AddSwaggerGen();
 
 // Add session services
@@ -38,7 +40,7 @@ builder.Services.AddRazorPages(options =>
 var firebaseProjectName = credential.ProjectId;
 builder.Services.AddSingleton(new FirebaseAuthClient(new FirebaseAuthConfig
 {
-    ApiKey = "AIzaSyCnNjMmu-8vFGdGjyqYhTJ-6TQS-g0Ja00\r\n",
+    ApiKey = "AIzaSyCnNjMmu-8vFGdGjyqYhTJ-6TQS-g0Ja00",
     AuthDomain = $"{firebaseProjectName}.firebaseapp.com",
     Providers = new FirebaseAuthProvider[]
     {
@@ -61,20 +63,31 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
+// Add CORS services
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("MyPolicy", builder =>
+    {
+        builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader();
+    });
+});
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+// Use Swagger middleware
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+});
 
 // Use session middleware
 app.UseSession();
@@ -100,6 +113,11 @@ app.UseStatusCodePages(async contextAccessor =>
     }
 });
 
-app.MapControllers();
+// Use CORS middleware
+app.UseCors("MyPolicy");
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=UserDto}/{action=Index}/{id?}");
 
 app.Run();
