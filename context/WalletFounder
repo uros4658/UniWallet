@@ -1,0 +1,93 @@
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
+const bullishConverter = {
+  'Very Bearish': 0,
+  'Bearish': 1,
+  'Neutral': 2,
+  'Bullish': 3,
+  'Very Bullish': 4
+};
+
+const WalletFounder = ({ walletDictionary, purchaseCurrency, purchaseAmount }) => {
+  const [predictionDict, setPredictionDict] = useState({});
+
+  useEffect(() => {
+    const fetchPredictionData = async () => {
+      const predictionDictCopy = { ...predictionDict };
+      for (const walletId in walletDictionary) {
+        const currencies = walletDictionary[walletId];
+        if (purchaseCurrency in currencies) {
+          if (parseFloat(purchaseAmount) <= parseFloat(currencies[purchaseCurrency])) {
+            return [walletId, purchaseCurrency];
+          }
+        } else {
+          for (const currency in currencies) {
+            if (!predictionDictCopy[currency]) {
+              try {
+                const response = await axios.get(
+                  `https://www.binance.com/bapi/composite/v1/friendly/cms/rating?ratingId=SEO-${currency}`
+                );
+                const maxTitle = response.data.data.scaleList.reduce((prev, current) =>
+                  prev.count > current.count ? prev : current
+                ).title;
+                predictionDictCopy[currency] = bullishConverter[maxTitle] || 0;
+              } catch (error) {
+                console.error(error);
+              }
+            }
+          }
+        }
+      }
+      const sortedCurrencies = Object.keys(predictionDictCopy).sort(
+        (a, b) => predictionDictCopy[a] - predictionDictCopy[b]
+      );
+      setPredictionDict(predictionDictCopy);
+    };
+
+    fetchPredictionData();
+  }, [walletDictionary, predictionDict, purchaseCurrency, purchaseAmount]);
+
+  useEffect(() => {
+    const findCurrencyToPurchase = async () => {
+      for (const walletId in walletDictionary) {
+        const currencies = walletDictionary[walletId];
+        const sortedCurrencies = Object.keys(predictionDict).sort(
+          (a, b) => predictionDict[a] - predictionDict[b]
+        );
+        for (const currency of sortedCurrencies) {
+          if (currency in currencies) {
+            try {
+              let endpoint = `https://api.binance.com/api/v3/ticker/price?symbol=${currency}${purchaseCurrency}`;
+              let response = await axios.get(endpoint);
+              let changingRate = parseFloat(response.data.price);
+              if (parseFloat(currencies[currency]) * changingRate >= parseFloat(purchaseAmount)) {
+                return [walletId, currency];
+              }
+            } catch (error) {
+              if (error.response.data.code === -1013) {
+                let endpoint = `https://api.binance.com/api/v3/ticker/price?symbol=${purchaseCurrency}${currency}`;
+                let response = await axios.get(endpoint);
+                const changingRate = 1 / parseFloat(response.data.price);
+                if (parseFloat(currencies[currency]) * changingRate >= parseFloat(purchaseAmount)) {
+                  return [walletId, currency];
+                }
+              } else {
+                console.error(error);
+              }
+            }
+          }
+        }
+      }
+      throw new Error("You do not have enough money in your wallets to make this purchase");
+    };
+
+    findCurrencyToPurchase()
+      .then(([walletId, currency]) => console.log(walletId, currency))
+      .catch(error => console.error(error.message));
+  }, [walletDictionary, predictionDict, purchaseCurrency, purchaseAmount]);
+
+  return null;
+};
+
+export default WalletFounder;
