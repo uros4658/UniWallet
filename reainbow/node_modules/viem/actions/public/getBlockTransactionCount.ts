@@ -18,21 +18,21 @@ import {
 export type GetBlockTransactionCountParameters =
   | {
       /** Hash of the block. */
-      blockHash?: Hash
-      blockNumber?: never
-      blockTag?: never
+      blockHash?: Hash | undefined
+      blockNumber?: never | undefined
+      blockTag?: never | undefined
     }
   | {
-      blockHash?: never
+      blockHash?: never | undefined
       /** The block number. */
-      blockNumber?: bigint
-      blockTag?: never
+      blockNumber?: bigint | undefined
+      blockTag?: never | undefined
     }
   | {
-      blockHash?: never
-      blockNumber?: never
+      blockHash?: never | undefined
+      blockNumber?: never | undefined
       /** The block tag. Defaults to 'latest'. */
-      blockTag?: BlockTag
+      blockTag?: BlockTag | undefined
     }
 
 export type GetBlockTransactionCountReturnType = number
@@ -46,7 +46,7 @@ export type GetBlockTransactionCountErrorType =
 /**
  * Returns the number of Transactions at a block number, hash, or tag.
  *
- * - Docs: https://viem.sh/docs/actions/public/getBlockTransactionCount.html
+ * - Docs: https://viem.sh/docs/actions/public/getBlockTransactionCount
  * - JSON-RPC Methods:
  *   - Calls [`eth_getBlockTransactionCountByNumber`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getblocktransactioncountbynumber) for `blockNumber` & `blockTag`.
  *   - Calls [`eth_getBlockTransactionCountByHash`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getblocktransactioncountbyhash) for `blockHash`.

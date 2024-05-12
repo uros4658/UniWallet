@@ -17,6 +17,7 @@ import { formatGwei } from '../utils/unit/formatGwei.js'
 
 import { AbiErrorSignatureNotFoundError } from './abi.js'
 import { BaseError } from './base.js'
+import { prettyStateOverride } from './stateOverride.js'
 import { prettyPrint } from './transaction.js'
 import { getContractAddress } from './utils.js'
 
@@ -42,10 +43,14 @@ export class CallExecutionError extends BaseError {
       nonce,
       to,
       value,
-    }: CallParameters & { chain?: Chain; docsPath?: string },
+      stateOverride,
+    }: CallParameters & {
+      chain?: Chain | undefined
+      docsPath?: string | undefined
+    },
   ) {
     const account = account_ ? parseAccount(account_) : undefined
-    const prettyArgs = prettyPrint({
+    let prettyArgs = prettyPrint({
       from: account?.address,
       to,
       value:
@@ -63,6 +68,10 @@ export class CallExecutionError extends BaseError {
         `${formatGwei(maxPriorityFeePerGas)} gwei`,
       nonce,
     })
+
+    if (stateOverride) {
+      prettyArgs += `\n${prettyStateOverride(stateOverride)}`
+    }
 
     super(cause.shortMessage, {
       cause,
@@ -83,12 +92,12 @@ export type ContractFunctionExecutionErrorType =
   }
 export class ContractFunctionExecutionError extends BaseError {
   abi: Abi
-  args?: unknown[]
+  args?: unknown[] | undefined
   override cause: BaseError
-  contractAddress?: Address
-  formattedArgs?: string
+  contractAddress?: Address | undefined
+  formattedArgs?: string | undefined
   functionName: string
-  sender?: Address
+  sender?: Address | undefined
 
   override name = 'ContractFunctionExecutionError'
 
@@ -103,11 +112,11 @@ export class ContractFunctionExecutionError extends BaseError {
       sender,
     }: {
       abi: Abi
-      args?: any
-      contractAddress?: Address
-      docsPath?: string
+      args?: any | undefined
+      contractAddress?: Address | undefined
+      docsPath?: string | undefined
       functionName: string
-      sender?: Address
+      sender?: Address | undefined
     },
   ) {
     const abiItem = getAbiItem({ abi, args, name: functionName })
@@ -164,20 +173,25 @@ export type ContractFunctionRevertedErrorType =
 export class ContractFunctionRevertedError extends BaseError {
   override name = 'ContractFunctionRevertedError'
 
-  data?: DecodeErrorResultReturnType
-  reason?: string
-  signature?: Hex
+  data?: DecodeErrorResultReturnType | undefined
+  reason?: string | undefined
+  signature?: Hex | undefined
 
   constructor({
     abi,
     data,
     functionName,
     message,
-  }: { abi: Abi; data?: Hex; functionName: string; message?: string }) {
+  }: {
+    abi: Abi
+    data?: Hex | undefined
+    functionName: string
+    message?: string | undefined
+  }) {
     let cause: Error | undefined
     let decodedData: DecodeErrorResultReturnType | undefined = undefined
-    let metaMessages
-    let reason
+    let metaMessages: string[] | undefined
+    let reason: string | undefined
     if (data && data !== '0x') {
       try {
         decodedData = decodeErrorResult({ abi, data })
@@ -271,12 +285,15 @@ export class RawContractError extends BaseError {
   code = 3
   override name = 'RawContractError'
 
-  data?: Hex | { data?: Hex }
+  data?: Hex | { data?: Hex | undefined } | undefined
 
   constructor({
     data,
     message,
-  }: { data?: Hex | { data?: Hex }; message?: string }) {
+  }: {
+    data?: Hex | { data?: Hex | undefined } | undefined
+    message?: string | undefined
+  }) {
     super(message || '')
     this.data = data
   }

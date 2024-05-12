@@ -16,8 +16,12 @@ export type Block<
 > = {
   /** Base fee per gas */
   baseFeePerGas: TQuantity | null
+  /** Total used blob gas by all transactions in this block */
+  blobGasUsed: TQuantity
   /** Difficulty for this block */
   difficulty: TQuantity
+  /** Excess blob gas */
+  excessBlobGas: TQuantity
   /** "Extra data" field of this block */
   extraData: Hex
   /** Maximum gas allowed in this block */
@@ -58,14 +62,14 @@ export type Block<
   /** List of uncle hashes */
   uncles: Hash[]
   /** List of withdrawal objects */
-  withdrawals?: Withdrawal[]
+  withdrawals?: Withdrawal[] | undefined
   /** Root of the this block’s withdrawals trie */
-  withdrawalsRoot?: Hex
+  withdrawalsRoot?: Hex | undefined
 }
 
 export type BlockIdentifier<TQuantity = bigint> = {
   /** Whether or not to throw an error if the block is not in the canonical chain as described below. Only allowed in conjunction with the blockHash tag. Defaults to false. */
-  requireCanonical?: boolean
+  requireCanonical?: boolean | undefined
 } & (
   | {
       /** The block in the canonical chain with this number */

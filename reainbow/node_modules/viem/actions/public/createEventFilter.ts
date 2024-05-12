@@ -38,9 +38,9 @@ export type CreateEventFilterParameters<
     | MaybeExtractEventArgsFromAbi<TAbiEvents, _EventName>
     | undefined = undefined,
 > = {
-  address?: Address | Address[]
-  fromBlock?: TFromBlock | BlockNumber | BlockTag
-  toBlock?: TToBlock | BlockNumber | BlockTag
+  address?: Address | Address[] | undefined
+  fromBlock?: TFromBlock | BlockNumber | BlockTag | undefined
+  toBlock?: TToBlock | BlockNumber | BlockTag | undefined
 } & (MaybeExtractEventArgsFromAbi<
   TAbiEvents,
   _EventName
@@ -51,44 +51,44 @@ export type CreateEventFilterParameters<
             | TEventFilterArgs
             | (_Args extends TEventFilterArgs ? _Args : never)
           event: TAbiEvent
-          events?: never
+          events?: never | undefined
           /**
            * Whether or not the logs must match the indexed/non-indexed arguments on `event`.
            * @default false
            */
-          strict?: TStrict
+          strict?: TStrict | undefined
         }
       | {
-          args?: never
-          event?: TAbiEvent
-          events?: never
+          args?: never | undefined
+          event?: TAbiEvent | undefined
+          events?: never | undefined
           /**
            * Whether or not the logs must match the indexed/non-indexed arguments on `event`.
            * @default false
            */
-          strict?: TStrict
+          strict?: TStrict | undefined
         }
       | {
-          args?: never
-          event?: never
-          events: TAbiEvents
+          args?: never | undefined
+          event?: never | undefined
+          events: TAbiEvents | undefined
           /**
            * Whether or not the logs must match the indexed/non-indexed arguments on `event`.
            * @default false
            */
-          strict?: TStrict
+          strict?: TStrict | undefined
         }
       | {
-          args?: never
-          event?: never
-          events?: never
-          strict?: never
+          args?: never | undefined
+          event?: never | undefined
+          events?: never | undefined
+          strict?: never | undefined
         }
   : {
-      args?: never
-      event?: never
-      events?: never
-      strict?: never
+      args?: never | undefined
+      event?: never | undefined
+      events?: never | undefined
+      strict?: never | undefined
     })
 
 export type CreateEventFilterReturnType<
@@ -115,14 +115,14 @@ export type CreateEventFilterErrorType =
   | ErrorType
 
 /**
- * Creates a [`Filter`](https://viem.sh/docs/glossary/types.html#filter) to listen for new events that can be used with [`getFilterChanges`](https://viem.sh/docs/actions/public/getFilterChanges.html).
+ * Creates a [`Filter`](https://viem.sh/docs/glossary/types#filter) to listen for new events that can be used with [`getFilterChanges`](https://viem.sh/docs/actions/public/getFilterChanges).
  *
- * - Docs: https://viem.sh/docs/actions/public/createEventFilter.html
+ * - Docs: https://viem.sh/docs/actions/public/createEventFilter
  * - JSON-RPC Methods: [`eth_newFilter`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_newfilter)
  *
  * @param client - Client to use
  * @param parameters - {@link CreateEventFilterParameters}
- * @returns [`Filter`](https://viem.sh/docs/glossary/types.html#filter). {@link CreateEventFilterReturnType}
+ * @returns [`Filter`](https://viem.sh/docs/glossary/types#filter). {@link CreateEventFilterReturnType}
  *
  * @example
  * import { createPublicClient, http } from 'viem'
@@ -221,7 +221,7 @@ export async function createEventFilter<
     fromBlock,
     id,
     request: getRequest(id),
-    strict,
+    strict: Boolean(strict),
     toBlock,
     type: 'event',
   } as unknown as CreateEventFilterReturnType<

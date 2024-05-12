@@ -1,3 +1,4 @@
+import type { Address } from 'abitype'
 import type { Account } from '../../accounts/types.js'
 import {
   type ParseAccountErrorType,
@@ -5,9 +6,7 @@ import {
 } from '../../accounts/utils/parseAccount.js'
 import type { Client } from '../../clients/createClient.js'
 import type { Transport } from '../../clients/transports/createTransport.js'
-import { AccountNotFoundError } from '../../errors/account.js'
 import type { BaseError } from '../../errors/base.js'
-import type { GetAccountParameter } from '../../types/account.js'
 import type { BlockTag } from '../../types/block.js'
 import type { Chain } from '../../types/chain.js'
 import type { TransactionRequest } from '../../types/transaction.js'
@@ -42,22 +41,21 @@ export type FormattedEstimateGas<
 
 export type EstimateGasParameters<
   TChain extends Chain | undefined = Chain | undefined,
-  TAccount extends Account | undefined = undefined,
-> = UnionOmit<FormattedEstimateGas<TChain>, 'from'> &
-  GetAccountParameter<TAccount> &
-  (
+> = UnionOmit<FormattedEstimateGas<TChain>, 'from'> & {
+  account?: Account | Address | undefined
+} & (
     | {
         /** The balance of the account at a block number. */
-        blockNumber?: bigint
-        blockTag?: never
+        blockNumber?: bigint | undefined
+        blockTag?: never | undefined
       }
     | {
-        blockNumber?: never
+        blockNumber?: never | undefined
         /**
          * The balance of the account at a block tag.
          * @default 'latest'
          */
-        blockTag?: BlockTag
+        blockTag?: BlockTag | undefined
       }
   )
 
@@ -73,7 +71,7 @@ export type EstimateGasErrorType = GetEstimateGasErrorReturnType<
 /**
  * Estimates the gas necessary to complete a transaction without submitting it to the network.
  *
- * - Docs: https://viem.sh/docs/actions/public/estimateGas.html
+ * - Docs: https://viem.sh/docs/actions/public/estimateGas
  * - JSON-RPC Methods: [`eth_estimateGas`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_estimategas)
  *
  * @param client - Client to use
@@ -100,36 +98,35 @@ export async function estimateGas<
   TAccount extends Account | undefined = undefined,
 >(
   client: Client<Transport, TChain, TAccount>,
-  args: EstimateGasParameters<TChain, TAccount>,
+  args: EstimateGasParameters<TChain>,
 ): Promise<EstimateGasReturnType> {
   const account_ = args.account ?? client.account
-  if (!account_)
-    throw new AccountNotFoundError({
-      docsPath: '/docs/actions/public/estimateGas',
-    })
-  const account = parseAccount(account_)
+  const account = account_ ? parseAccount(account_) : undefined
 
   try {
     const {
       accessList,
+      blobs,
+      blobVersionedHashes,
       blockNumber,
       blockTag,
       data,
       gas,
       gasPrice,
+      maxFeePerBlobGas,
       maxFeePerGas,
       maxPriorityFeePerGas,
       nonce,
       to,
       value,
       ...rest
-    } =
-      account.type === 'local'
-        ? ((await prepareTransactionRequest(
-            client,
-            args as PrepareTransactionRequestParameters,
-          )) as EstimateGasParameters)
-        : args
+    } = (await prepareTransactionRequest(client, {
+      ...args,
+      parameters:
+        // Some RPC Providers do not compute versioned hashes from blobs. We will need
+        // to compute them.
+        account?.type === 'local' ? undefined : ['blobVersionedHashes'],
+    } as PrepareTransactionRequestParameters)) as EstimateGasParameters
 
     const blockNumberHex = blockNumber ? numberToHex(blockNumber) : undefined
     const block = blockNumberHex || blockTag
@@ -142,11 +139,14 @@ export async function estimateGas<
     const request = format({
       // Pick out extra data that might exist on the chain's transaction request type.
       ...extract(rest, { format: chainFormat }),
-      from: account.address,
+      from: account?.address,
       accessList,
+      blobs,
+      blobVersionedHashes,
       data,
       gas,
       gasPrice,
+      maxFeePerBlobGas,
       maxFeePerGas,
       maxPriorityFeePerGas,
       nonce,

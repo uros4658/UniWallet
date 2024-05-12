@@ -16,12 +16,12 @@ export type GetBytecodeParameters = {
   address: Address
 } & (
   | {
-      blockNumber?: never
-      blockTag?: BlockTag
+      blockNumber?: never | undefined
+      blockTag?: BlockTag | undefined
     }
   | {
-      blockNumber?: bigint
-      blockTag?: never
+      blockNumber?: bigint | undefined
+      blockTag?: never | undefined
     }
 )
 
@@ -35,7 +35,7 @@ export type GetBytecodeErrorType =
 /**
  * Retrieves the bytecode at an address.
  *
- * - Docs: https://viem.sh/docs/contract/getBytecode.html
+ * - Docs: https://viem.sh/docs/contract/getBytecode
  * - JSON-RPC Methods: [`eth_getCode`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getcode)
  *
  * @param client - Client to use

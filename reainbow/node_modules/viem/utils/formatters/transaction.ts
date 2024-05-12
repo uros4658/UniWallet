@@ -5,9 +5,10 @@ import type {
   ExtractChainFormatterExclude,
   ExtractChainFormatterReturnType,
 } from '../../types/chain.js'
+import type { Hex } from '../../types/misc.js'
 import type { RpcTransaction } from '../../types/rpc.js'
-import type { Transaction } from '../../types/transaction.js'
-import type { UnionOmit } from '../../types/utils.js'
+import type { Transaction, TransactionType } from '../../types/transaction.js'
+import type { ExactPartial, UnionLooseOmit } from '../../types/utils.js'
 import { hexToNumber } from '../encoding/fromHex.js'
 import { type DefineFormatterErrorType, defineFormatter } from './formatter.js'
 
@@ -17,9 +18,7 @@ type TransactionPendingDependencies =
   | 'transactionIndex'
 
 export type FormattedTransaction<
-  TChain extends { formatters?: Chain['formatters'] } | undefined =
-    | { formatters?: Chain['formatters'] }
-    | undefined,
+  TChain extends Chain | undefined = undefined,
   TBlockTag extends BlockTag = BlockTag,
   _FormatterReturnType = ExtractChainFormatterReturnType<
     TChain,
@@ -28,8 +27,8 @@ export type FormattedTransaction<
   >,
   _ExcludedPendingDependencies extends string = TransactionPendingDependencies &
     ExtractChainFormatterExclude<TChain, 'transaction'>,
-> = UnionOmit<_FormatterReturnType, TransactionPendingDependencies> & {
-  [_key in _ExcludedPendingDependencies]: never
+> = UnionLooseOmit<_FormatterReturnType, TransactionPendingDependencies> & {
+  [_K in _ExcludedPendingDependencies]: never
 } & Pick<
     Transaction<bigint, number, TBlockTag extends 'pending' ? true : false>,
     TransactionPendingDependencies
@@ -39,11 +38,12 @@ export const transactionType = {
   '0x0': 'legacy',
   '0x1': 'eip2930',
   '0x2': 'eip1559',
-} as const
+  '0x3': 'eip4844',
+} as const satisfies Record<Hex, TransactionType>
 
 export type FormatTransactionErrorType = ErrorType
 
-export function formatTransaction(transaction: Partial<RpcTransaction>) {
+export function formatTransaction(transaction: ExactPartial<RpcTransaction>) {
   const transaction_ = {
     ...transaction,
     blockHash: transaction.blockHash ? transaction.blockHash : null,
@@ -53,6 +53,9 @@ export function formatTransaction(transaction: Partial<RpcTransaction>) {
     chainId: transaction.chainId ? hexToNumber(transaction.chainId) : undefined,
     gas: transaction.gas ? BigInt(transaction.gas) : undefined,
     gasPrice: transaction.gasPrice ? BigInt(transaction.gasPrice) : undefined,
+    maxFeePerBlobGas: transaction.maxFeePerBlobGas
+      ? BigInt(transaction.maxFeePerBlobGas)
+      : undefined,
     maxFeePerGas: transaction.maxFeePerGas
       ? BigInt(transaction.maxFeePerGas)
       : undefined,
@@ -64,7 +67,9 @@ export function formatTransaction(transaction: Partial<RpcTransaction>) {
     transactionIndex: transaction.transactionIndex
       ? Number(transaction.transactionIndex)
       : null,
-    type: transaction.type ? transactionType[transaction.type] : undefined,
+    type: transaction.type
+      ? (transactionType as any)[transaction.type]
+      : undefined,
     typeHex: transaction.type ? transaction.type : undefined,
     value: transaction.value ? BigInt(transaction.value) : undefined,
     v: transaction.v ? BigInt(transaction.v) : undefined,
@@ -86,13 +91,18 @@ export function formatTransaction(transaction: Partial<RpcTransaction>) {
 
   if (transaction_.type === 'legacy') {
     delete transaction_.accessList
+    delete transaction_.maxFeePerBlobGas
     delete transaction_.maxFeePerGas
     delete transaction_.maxPriorityFeePerGas
     delete transaction_.yParity
   }
   if (transaction_.type === 'eip2930') {
+    delete transaction_.maxFeePerBlobGas
     delete transaction_.maxFeePerGas
     delete transaction_.maxPriorityFeePerGas
+  }
+  if (transaction_.type === 'eip1559') {
+    delete transaction_.maxFeePerBlobGas
   }
   return transaction_
 }

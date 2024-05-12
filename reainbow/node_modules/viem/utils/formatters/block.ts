@@ -7,7 +7,7 @@ import type {
 } from '../../types/chain.js'
 import type { Hash } from '../../types/misc.js'
 import type { RpcBlock } from '../../types/rpc.js'
-import type { Prettify } from '../../types/utils.js'
+import type { ExactPartial, Prettify } from '../../types/utils.js'
 
 import { type DefineFormatterErrorType, defineFormatter } from './formatter.js'
 import { type FormattedTransaction, formatTransaction } from './transaction.js'
@@ -15,9 +15,7 @@ import { type FormattedTransaction, formatTransaction } from './transaction.js'
 type BlockPendingDependencies = 'hash' | 'logsBloom' | 'nonce' | 'number'
 
 export type FormattedBlock<
-  TChain extends { formatters?: Chain['formatters'] } | undefined =
-    | { formatters?: Chain['formatters'] }
-    | undefined,
+  TChain extends Chain | undefined = undefined,
   TIncludeTransactions extends boolean = boolean,
   TBlockTag extends BlockTag = BlockTag,
   _FormatterReturnType = ExtractChainFormatterReturnType<
@@ -42,7 +40,7 @@ export type FormattedBlock<
 
 export type FormatBlockErrorType = ErrorType
 
-export function formatBlock(block: Partial<RpcBlock>) {
+export function formatBlock(block: ExactPartial<RpcBlock>) {
   const transactions = block.transactions?.map((transaction) => {
     if (typeof transaction === 'string') return transaction
     return formatTransaction(transaction)
@@ -50,7 +48,11 @@ export function formatBlock(block: Partial<RpcBlock>) {
   return {
     ...block,
     baseFeePerGas: block.baseFeePerGas ? BigInt(block.baseFeePerGas) : null,
+    blobGasUsed: block.blobGasUsed ? BigInt(block.blobGasUsed) : undefined,
     difficulty: block.difficulty ? BigInt(block.difficulty) : undefined,
+    excessBlobGas: block.excessBlobGas
+      ? BigInt(block.excessBlobGas)
+      : undefined,
     gasLimit: block.gasLimit ? BigInt(block.gasLimit) : undefined,
     gasUsed: block.gasUsed ? BigInt(block.gasUsed) : undefined,
     hash: block.hash ? block.hash : null,

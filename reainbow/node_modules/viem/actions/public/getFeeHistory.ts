@@ -24,17 +24,17 @@ export type GetFeeHistoryParameters = {
   rewardPercentiles: number[]
 } & (
   | {
-      blockNumber?: never
+      blockNumber?: never | undefined
       /**
        * Highest number block of the requested range.
        * @default 'latest'
        */
-      blockTag?: BlockTag
+      blockTag?: BlockTag | undefined
     }
   | {
       /** Highest number block of the requested range. */
-      blockNumber?: bigint
-      blockTag?: never
+      blockNumber?: bigint | undefined
+      blockTag?: never | undefined
     }
 )
 export type GetFeeHistoryReturnType = FeeHistory
@@ -47,7 +47,7 @@ export type GetFeeHistoryErrorType =
 /**
  * Returns a collection of historical gas information.
  *
- * - Docs: https://viem.sh/docs/actions/public/getFeeHistory.html
+ * - Docs: https://viem.sh/docs/actions/public/getFeeHistory
  * - JSON-RPC Methods: [`eth_feeHistory`](https://docs.alchemy.com/reference/eth-feehistory)
  *
  * @param client - Client to use

@@ -2,6 +2,7 @@
   "dependencies": {
     "@coinbase/wallet-sdk": "^3.7.2",
     "@web3-react/core": "^8.2.3",
+    "axios": "^1.6.8",
     "cors-anywhere": "^0.4.4",
     "ethers": "^6.12.1",
     "wagmi": "^2.8.6",

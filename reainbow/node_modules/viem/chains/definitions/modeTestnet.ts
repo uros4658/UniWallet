@@ -1,15 +1,13 @@
 import { defineChain } from '../../utils/chain/defineChain.js'
 
+const sourceId = 11_155_111 // sepolia
+
 export const modeTestnet = /*#__PURE__*/ defineChain({
   id: 919,
   name: 'Mode Testnet',
-  network: 'mode-testnet',
   nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
   rpcUrls: {
     default: {
-      http: ['https://sepolia.mode.network'],
-    },
-    public: {
       http: ['https://sepolia.mode.network'],
     },
   },
@@ -17,6 +15,7 @@ export const modeTestnet = /*#__PURE__*/ defineChain({
     default: {
       name: 'Blockscout',
       url: 'https://sepolia.explorer.mode.network',
+      apiUrl: 'https://sepolia.explorer.mode.network/api',
     },
   },
   contracts: {
@@ -26,4 +25,5 @@ export const modeTestnet = /*#__PURE__*/ defineChain({
     },
   },
   testnet: true,
+  sourceId,
 })

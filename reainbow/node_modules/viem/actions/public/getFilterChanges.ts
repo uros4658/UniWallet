@@ -2,20 +2,15 @@ import type { Abi, AbiEvent, ExtractAbiEvent } from 'abitype'
 
 import type { Client } from '../../clients/createClient.js'
 import type { Transport } from '../../clients/transports/createTransport.js'
-import {
-  DecodeLogDataMismatch,
-  DecodeLogTopicsMismatch,
-} from '../../errors/abi.js'
 import type { ErrorType } from '../../errors/utils.js'
+import type { RpcLog } from '../../index.js'
 import type { BlockNumber, BlockTag } from '../../types/block.js'
 import type { Chain } from '../../types/chain.js'
 import type { Filter, FilterType } from '../../types/filter.js'
 import type { Log } from '../../types/log.js'
 import type { Hash } from '../../types/misc.js'
-import {
-  type DecodeEventLogErrorType,
-  decodeEventLog,
-} from '../../utils/abi/decodeEventLog.js'
+import { type DecodeEventLogErrorType } from '../../utils/abi/decodeEventLog.js'
+import { parseEventLogs } from '../../utils/abi/parseEventLogs.js'
 import type { RequestErrorType } from '../../utils/buildRequest.js'
 import {
   type FormatLogErrorType,
@@ -69,15 +64,15 @@ export type GetFilterChangesErrorType =
 /**
  * Returns a list of logs or hashes based on a [Filter](/docs/glossary/terms#filter) since the last time it was called.
  *
- * - Docs: https://viem.sh/docs/actions/public/getFilterChanges.html
+ * - Docs: https://viem.sh/docs/actions/public/getFilterChanges
  * - JSON-RPC Methods: [`eth_getFilterChanges`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getfilterchanges)
  *
  * A Filter can be created from the following actions:
  *
- * - [`createBlockFilter`](https://viem.sh/docs/actions/public/createBlockFilter.html)
- * - [`createContractEventFilter`](https://viem.sh/docs/contract/createContractEventFilter.html)
- * - [`createEventFilter`](https://viem.sh/docs/actions/public/createEventFilter.html)
- * - [`createPendingTransactionFilter`](https://viem.sh/docs/actions/public/createPendingTransactionFilter.html)
+ * - [`createBlockFilter`](https://viem.sh/docs/actions/public/createBlockFilter)
+ * - [`createContractEventFilter`](https://viem.sh/docs/contract/createContractEventFilter)
+ * - [`createEventFilter`](https://viem.sh/docs/actions/public/createEventFilter)
+ * - [`createPendingTransactionFilter`](https://viem.sh/docs/actions/public/createPendingTransactionFilter)
  *
  * Depending on the type of filter, the return value will be different:
  *
@@ -185,38 +180,32 @@ export async function getFilterChanges<
     method: 'eth_getFilterChanges',
     params: [filter.id],
   })
-  return logs
-    .map((log) => {
-      if (typeof log === 'string') return log
-      try {
-        const { eventName, args } =
-          'abi' in filter && filter.abi
-            ? decodeEventLog({
-                abi: filter.abi,
-                data: log.data,
-                topics: log.topics as any,
-                strict,
-              })
-            : { eventName: undefined, args: undefined }
-        return formatLog(log, { args, eventName })
-      } catch (err) {
-        let eventName
-        let isUnnamed
-        if (
-          err instanceof DecodeLogDataMismatch ||
-          err instanceof DecodeLogTopicsMismatch
-        ) {
-          // If strict mode is on, and log data/topics do not match event definition, skip.
-          if ('strict' in filter && filter.strict) return
-          eventName = err.abiItem.name
-          isUnnamed = err.abiItem.inputs?.some((x) => !('name' in x && x.name))
-        }
 
-        // Set args undefined if there is an error decoding (e.g. indexed/non-indexed params mismatch).
-        return formatLog(log, { args: isUnnamed ? [] : {}, eventName })
-      }
-    })
-    .filter(Boolean) as GetFilterChangesReturnType<
+  if (typeof logs[0] === 'string')
+    return logs as GetFilterChangesReturnType<
+      TFilterType,
+      TAbi,
+      TEventName,
+      TStrict,
+      TFromBlock,
+      TToBlock
+    >
+
+  const formattedLogs = logs.map((log) => formatLog(log as RpcLog))
+  if (!('abi' in filter) || !filter.abi)
+    return formattedLogs as GetFilterChangesReturnType<
+      TFilterType,
+      TAbi,
+      TEventName,
+      TStrict,
+      TFromBlock,
+      TToBlock
+    >
+  return parseEventLogs({
+    abi: filter.abi,
+    logs: formattedLogs,
+    strict,
+  }) as unknown as GetFilterChangesReturnType<
     TFilterType,
     TAbi,
     TEventName,

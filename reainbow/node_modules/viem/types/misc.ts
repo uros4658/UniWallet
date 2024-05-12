@@ -1,3 +1,5 @@
+import type { OneOf } from './utils.js'
+
 export type ByteArray = Uint8Array
 export type Hex = `0x${string}`
 export type Hash = `0x${string}`
@@ -8,17 +10,29 @@ export type SignableMessage =
       /** Raw data representation of the message. */
       raw: Hex | ByteArray
     }
-export type Signature = {
-  // TODO(v2): Make `bigint`
+export type SignatureLegacy = {
   r: Hex
-  // TODO(v2): Make `bigint`
   s: Hex
-  // TODO(v2): `v` to `recovery`
   v: bigint
 }
+export type Signature = OneOf<
+  | SignatureLegacy
+  | {
+      r: Hex
+      s: Hex
+      /** @deprecated use `yParity`. */
+      v: bigint
+      yParity?: number | undefined
+    }
+  | {
+      r: Hex
+      s: Hex
+      /** @deprecated use `yParity`. */
+      v?: bigint | undefined
+      yParity: number
+    }
+>
 export type CompactSignature = {
-  // TODO(v2): Make `bigint`
   r: Hex
-  // TODO(v2): Make `bigint`
   yParityAndS: Hex
 }
