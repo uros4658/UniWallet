@@ -10,7 +10,7 @@ export default function Header() {
             padding: '0 30px',
         },
         label: {
-            margin: '30px 0 0 8%',
+            margin: '0 0 0 12%',
         },
         'label a': {
             color: 'blue',
@@ -23,7 +23,7 @@ export default function Header() {
             display: 'flex',
         },
         li: {
-            padding: '30px',
+            padding: '15px',  // Adjusted the padding to vertically center the items
         },
         a: {
             color: 'black',
@@ -40,7 +40,7 @@ export default function Header() {
             outline: 'none',
             border: 'none',
             cursor: 'pointer',
-            marginTop: '0',
+            marginTop: '0',  // Adjusted the top margin to 0
         },
     };
 

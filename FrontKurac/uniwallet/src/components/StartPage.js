@@ -12,6 +12,10 @@ export default function StartPage() {
         },
         'b-title': {
             marginLeft: '10%',
+            display: 'flex',         // This will enable flexbox
+            flexDirection: 'column',  // This will stack the children vertically
+            justifyContent: 'center', // This will center the children vertically
+
         },
         'b-title h1': {
             fontSize: '50px',  // increased from 45px to 50px
@@ -42,7 +46,7 @@ export default function StartPage() {
             padding: '20px',
         },
         'b-img': {
-            marginLeft: '12%',
+            marginLeft: '10%',
         },
         'b-img img': {
             width: 'auto',
